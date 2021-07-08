@@ -1,0 +1,29 @@
+﻿
+
+<h1 class="p-4 text-white text-center">Crear Nota</h1>
+
+
+<form action="/Nota/CrearNotaForm" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <h3 class="text-white">Nombre</h3>
+        <input class="form-control" type="text" name="Curso" placeholder="Nombre Nota a crear" />
+    </div>
+   
+    <div class="form-group">
+        <h3 class="text-white">Categoria</h3>
+        <select class="form-control" name="Categoria">
+            <option name="">Elija una categoria</option>
+            @foreach (var item in ViewBag.Categorias)
+            {
+                 <option value="@item.IdEtiqueta"> @item.NombreEtiqueta</option>
+            }
+        </select>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btnCrearNota">Crear</button>
+        <a href='javascript:history.go(-1)' class="btn btn-danger">Cancelar</a>
+    </div>
+
+
+    @ViewBag.Validation
+</form>

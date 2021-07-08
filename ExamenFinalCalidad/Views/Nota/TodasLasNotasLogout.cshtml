@@ -1,0 +1,33 @@
+﻿
+<link href="~/css/TodosLosCursos.css" rel="stylesheet" />
+
+<div class="search-container">
+    <form>
+        <input type="text" style="" placeholder="Buscar Curso" name="busqueda" autocomplete="off">
+        <button type="submit" class="btnBuscar"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+
+<div style="text-align:center">
+    <a href="/Nota/TodasLasNotasLogout"><img width="700" height="250" src="" /></a>
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="card-deck">
+            @foreach (var item in @ViewBag.Notas)
+            {
+<div class="col-md-4">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <img class="card-img-top zoom" src="@item.Imagen" />
+        <div class="card-body">
+            <a href="/Nota/DetalleNotaLogout?Id=@item.Id"><h4 class="card-title text-white text-center">@item.Nombre</h4></a>
+            <p>@ViewBag.Categorias[@item.Id]</p>
+            <a href="/Nota/DetalleNotaLogout?Id=@item.Id" class="btn btn-info text-center btnLeerMas">Leer m&aacute;s...</a>
+        </div>
+    </div>
+</div>            }
+        </div>
+    </div>
+</div>

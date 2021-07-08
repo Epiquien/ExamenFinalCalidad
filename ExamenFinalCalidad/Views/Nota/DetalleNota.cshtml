@@ -1,0 +1,26 @@
+﻿
+@*<script src="~/js/DetalleCurso.js"></script>*@
+
+<h1 style="color:white">@ViewBag.Nota.Nombre</h1>
+<link href="~/css/DetalleCurso.css" rel="stylesheet" />
+<hr />
+<table class="table table-borderless" style="color:white">
+    <thead>
+        <tr>
+            <th>Nombre de la nota</th>
+            <th>Fecha de creacion</th>
+            <th>Creador</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@ViewBag.Nota.TituloNota</td>
+            <td>@ViewBag.Nota.ContenidoNota</td>
+            <td>@ViewBag.Nota.Fecha</td>
+            <td>@ViewBag.Usuario.Nombres</td>
+        </tr>
+
+    </tbody>
+</table>
+

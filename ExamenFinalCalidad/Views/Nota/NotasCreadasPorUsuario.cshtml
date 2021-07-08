@@ -1,0 +1,77 @@
+﻿
+        <style>
+            img .zoom {
+                width: 90%;
+            }
+
+                img .zoom:hover {
+                    width: 95%;
+                }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+            h4 .card-title:hover {
+                text-decoration: none;
+                width: 50%;
+            }
+
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #f1f1f1;
+            }
+
+            .zoom {
+                transition: transform .2s;
+            }
+
+                .zoom:hover {
+                    transform: scale(1.1);
+                }
+        </style>
+
+        <h1 class="p-3 text-white text-center" style="margin-bottom:0px">Mis Notas</h1>
+        <br />
+
+        <div class="p-3">
+            <a class="btn btn-lg btn-secondary btn-block btnCrear" href="/Nota/CrearNotaInterface"><i class="fas fa-plus-square"></i>  Crear Nota</a>
+        </div>
+
+
+        <div class="row">
+            <div class="container">
+                <div class="card-deck">
+                    @if (ViewBag.Cantidad != 0)
+                    {
+                @foreach (var item in @ViewBag.NotasCreadasPorUsuario)
+                 {
+            <div class="col-md-4">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+      
+                <div class="card-header text-center">
+                    <a href="/Nota/DetalleNota?Id=@item.Id"><h4 class="text-white">@item.TituloNota</h4></a>
+                </div>
+                <div class="card-body">
+                    <label>@ViewBag.Categorias[@item.Id]</label>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-info" href="/Nota/EditarNota?Id=@item.Id"><i class="fas fa-video"></i> Editar Nota</a>
+                </div>
+            </div>
+        </div>               
+                 }            
+                    }
+
+                </div>
+
+            </div>
+        </div>
+
+
+        @if (ViewBag.Cantidad == 0)
+        {
+        <h2 class="text-white text-center" style="position:absolute;left:50%;top:50%;transform: translateX(-50%) translateY(-50%)">No has creado ninguna Nota</h2>
+                        <h5 class="text-white text-center" style="position:absolute;left:50%;top:53%;transform: translateX(-50%) translateY(-50%)">Crea tus cursos presionando "Crear Nota"</h5>}

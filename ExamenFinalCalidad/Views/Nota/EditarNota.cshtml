@@ -1,0 +1,26 @@
+﻿
+
+<h1 class="p-4 text-white text-center">Editar Nota</h1>
+
+
+<form action="/Curso/EditarCursoForm" method="post">
+    <input type="hidden" value="@ViewBag.Nota.IdNota" name="Id">
+    <div class="form-group">
+        <h3 class="text-white">Nombre</h3>
+        <input class="form-control" type="text" name="Nombre" placeholder="@ViewBag.Nota.TituloNota" />
+    </div>
+    <div class="form-group">
+        <h3 class="text-white">Etiqueta</h3>
+        <select class="form-control" name="Categoria">
+            <option name="">Elija una categoria</option>
+            @foreach (var item in ViewBag.Categorias)
+            {
+<option value="@item.Id"> @item.Nombre</option>            }
+        </select>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href='javascript:history.go(-1)' class="btn btn-danger">Cancelar</a>
+    </div>
+
+</form>

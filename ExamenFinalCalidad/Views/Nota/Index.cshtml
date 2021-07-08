@@ -1,0 +1,87 @@
+﻿
+            <style>
+                img .zoom {
+                    width: 90%;
+                }
+
+                    img .zoom:hover {
+                        width: 95%;
+                    }
+
+                .active, .collapsible:hover {
+                    background-color: #555;
+                }
+
+                h4 .card-title:hover {
+                    text-decoration: none;
+                    width: 50%;
+                }
+
+                .content {
+                    padding: 0 18px;
+                    display: none;
+                    overflow: hidden;
+                    background-color: #f1f1f1;
+                }
+
+                .zoom {
+                    transition: transform .2s;
+                }
+
+                    .zoom:hover {
+                        transform: scale(1.1);
+                    }
+            </style>
+            <form>
+                <input type="text" placeholder="Buscar Nota" name="busqueda" autocomplete="off" />
+
+            </form>
+
+            <h1 class="p-4 text-white text-center">Mi Lista</h1>
+
+            <div class="row">
+                <div class="container">
+                    <div class="card-deck">
+                        @if (ViewBag.Cantidad != 0)
+                        {
+             @foreach (var item in @ViewBag.MisNotas)
+            {
+                <div class="col-md-4">
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+      
+                    <div class="card-header text-center">
+                        <a href="/Nota/DetalleNota?Id=@item.Id"><h4 class="text-white">@item.Nombre</h4></a>
+                    </div>
+                    <div class="card-body">
+                        <label>@ViewBag.Categorias[@item.Id]</label>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="btn btn-danger" title="Eliminar Nota" href="/Nota/desagregarNota?Id=@item.Id"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            </div>               
+            }            
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @if (ViewBag.Cantidad == 0)
+            {
+            <h2 class="text-white text-center" style="position:absolute;left:50%;top:50%;transform: translateX(-50%) translateY(-50%)">Tu lista esta vacía</h2>
+                            <h5 class="text-white text-center" style="position:absolute;left:50%;top:53%;transform: translateX(-50%) translateY(-50%)">Agrega Notas en Inicio!</h5>}
+
+            <script>var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }</script>
